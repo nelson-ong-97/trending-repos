@@ -14,7 +14,7 @@ This project was created with [Better-T-Stack](https://github.com/AmanVarshney01
 - **Prisma** - TypeScript-first ORM
 - **PostgreSQL** - Database engine
 - **Authentication** - Better-Auth
-- **Vercel Cron** - Automated repository syncing every 6 hours
+- **Vercel Cron** - Automated repository syncing daily (Hobby plan) or every 6 hours (Pro plan)
 - **Upstash Redis** - Caching layer for GitHub API responses
 
 ## Getting Started
@@ -114,7 +114,7 @@ This application is configured for deployment on Vercel with automatic cron jobs
 3. Configure environment variables (see `DEPLOYMENT.md` for details)
 4. Deploy!
 
-The cron job will automatically sync repositories every 6 hours.
+The cron job will automatically sync repositories daily (Hobby plan) or every 6 hours (Pro plan).
 
 For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
@@ -139,7 +139,7 @@ Optional environment variables:
 - **Language Filter**: Filter repositories by programming language
 - **Pagination**: Navigate through pages of results (9 repos per page)
 - **Topics Display**: View repository topics as badges
-- **Auto Sync**: Automatic syncing via Vercel Cron every 6 hours
+- **Auto Sync**: Automatic syncing via Vercel Cron daily (Hobby plan) or every 6 hours (Pro plan)
 
 ## Contributing
 

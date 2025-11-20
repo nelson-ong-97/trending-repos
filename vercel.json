@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd apps/web && npm run build",
+  "buildCommand": "cd apps/web && bun run build",
   "outputDirectory": "apps/web/.output",
-  "installCommand": "npm install",
+  "installCommand": "bun install",
   "framework": null,
   "rewrites": [
     {
