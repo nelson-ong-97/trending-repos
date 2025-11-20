@@ -1,0 +1,45 @@
+model Repository {
+  id                BigInt    @id @default(autoincrement())
+  githubId          BigInt    @unique
+  owner             String
+  name              String
+  fullName          String    @unique
+  url               String
+  description       String?
+  language          String?
+  stargazersCount   Int       @default(0)
+  forksCount        Int       @default(0)
+  openIssuesCount   Int?
+  topics            String[]
+  createdAt         DateTime
+  updatedAt         DateTime
+  lastSyncedAt      DateTime  @default(now())
+  created           DateTime  @default(now())
+  updated           DateTime  @updatedAt
+  snapshots         RepositorySnapshot[]
+
+  @@index([fullName])
+  @@index([language, stargazersCount])
+  @@map("repository")
+}
+
+model RepositorySnapshot {
+  id              BigInt      @id @default(autoincrement())
+  repositoryId    BigInt
+  repository      Repository  @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+  period          String      // 'daily' | 'weekly' | 'monthly' | 'yearly'
+  periodStartDate DateTime
+  starsAtStart    Int
+  starsAtEnd      Int
+  forksAtStart    Int
+  forksAtEnd      Int
+  trendingScore   Decimal?    @db.Decimal(10, 2)
+  snapshotDate    DateTime    @default(now())
+  created         DateTime    @default(now())
+
+  @@index([repositoryId])
+  @@index([period, periodStartDate, trendingScore(sort: Desc)])
+  @@index([snapshotDate])
+  @@map("repository_snapshot")
+}
+
