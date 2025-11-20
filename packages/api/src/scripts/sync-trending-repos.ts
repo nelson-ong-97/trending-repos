@@ -4,7 +4,7 @@
  * This script can be run directly to populate the database with GitHub data.
  * Useful for initial data population and development/testing.
  * 
- * In production, Vercel Cron automatically runs this sync every 6 hours.
+ * In production, Vercel Cron automatically runs this sync daily (Hobby plan) or every 6 hours (Pro plan).
  * 
  * Usage: bun run packages/api/src/scripts/sync-trending-repos.ts
  */
@@ -41,7 +41,7 @@ async function runSync() {
   
   const duration = (result.duration / 1000).toFixed(2);
   console.log(`\n✨ Sync completed in ${duration}s`);
-  console.log(`\n💡 Tip: Vercel Cron will keep this data updated every 6 hours automatically.`);
+  console.log(`\n💡 Tip: Vercel Cron will keep this data updated daily automatically (Hobby plan) or every 6 hours (Pro plan).`);
 }
 
 // Run the sync
